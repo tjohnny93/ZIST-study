@@ -1,0 +1,16 @@
+[Unit]
+Description=uWSGI service
+After=syslog.target
+
+[Service]
+uwsgi를 관리자 권한으로 실행할때의 명령어
+ExecStart=/home/ubuntu/myvenv/bin/uwsgi -i /srv/ZIST-study/.config/uwsgi/mysite.ini 
+
+Restart=always
+KillSignal=SIGQUIT
+Type=notify
+StandardError=syslog
+NotifyAccess=all
+
+[Install]
+WantedBy=multi-user.target
